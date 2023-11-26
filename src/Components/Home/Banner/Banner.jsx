@@ -30,7 +30,7 @@ const Banner = () => {
   ];
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative mb-10">
       <AwesomeSlider className="rounded-3xl">
         {imageUrls.map((imageUrl, index) => (
           <div key={index} className="relative rounded-3xl">
@@ -57,8 +57,12 @@ const Banner = () => {
               </div>
               <div data-aos="fade-left">
                 <h1 className="text-white text-7xl font-bold">IN FITBUZZ</h1>
-                    </div>
-                    <button className='btn btn-info w-48 mt-8 text-xl'>See All Classes</button>
+              </div>
+              <a href="/all-classes">
+                <button className="btn btn-info w-64 h-16 mt-16 text-xl hover:bg-orange-600 hover:text-white">
+                  See All Classes
+                </button>
+              </a>
             </div>
           </div>
         ))}
