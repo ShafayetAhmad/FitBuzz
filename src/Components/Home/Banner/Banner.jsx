@@ -41,25 +41,25 @@ const Banner = () => {
             />
             <div className="absolute top-0 left-0 w-full h-full flex flex-col items-start pl-24 justify-center">
               <div data-aos="fade-down">
-                <p className="text-white font-bold text-2xl mb-8">
+                <p className="text-white font-bold lg:text-2xl md:text-xl text-lg mb-8">
                   BEST GYM OF THE CITY FOR FITNESS
                 </p>
               </div>
               <div data-aos="fade-left">
-                <h1 className="text-white text-7xl font-bold">
+                <h1 className="text-white lg:text-7xl md:text-3xl text-xl font-bold">
                   TRAIN WITH BEST
                 </h1>
               </div>
               <div data-aos="fade-right">
-                <h1 className="text-orange-600 text-9xl font-bold">
+                <h1 className="text-orange-600 lg:text-9xl md:text-4xl text-2xl font-bold">
                   GYM EXPERIENCE{" "}
                 </h1>
               </div>
               <div data-aos="fade-left">
-                <h1 className="text-white text-7xl font-bold">IN FITBUZZ</h1>
+                <h1 className="text-white lg:text-7xl md:text-3xl text-xl font-bold">IN FITBUZZ</h1>
               </div>
               <a href="/all-classes">
-                <button className="btn btn-info w-64 h-16 mt-16 text-xl hover:bg-orange-600 hover:text-white">
+                <button className="btn btn-info lg:w-64 w-24 lg:h-16 lg:mt-16 mt-4 lg:text-xl  hover:bg-orange-600 hover:text-white">
                   See All Classes
                 </button>
               </a>

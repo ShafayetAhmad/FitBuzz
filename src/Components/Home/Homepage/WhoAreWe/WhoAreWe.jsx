@@ -1,13 +1,15 @@
 const WhoAreWe = () => {
     return (
       <div>
-        <div className="hero bg-gray-700 text-white">
-          <div className="hero-content flex-col lg:flex-row">
-            <img
-              src="https://i.ibb.co/RgcFjJ2/whoarewe-img.jpg"
-              className="max-w-sm rounded-lg shadow-2xl"
-            />
-            <div>
+        <div className="hero bg-gray-900 text-white">
+          <div className="flex hero-content flex-col lg:flex-row">
+            <div className="flex-1">
+              <img
+                src="https://i.ibb.co/RgcFjJ2/whoarewe-img.jpg"
+                className="rounded-lg shadow-2xl"
+              />
+            </div>
+            <div className="flex-1">
               <h1 className="text-5xl font-bold text-center">Who Are We?</h1>
               <p className="py-6 px-6 text-xl text-justify ">
                 We are FitBuzz, your ultimate destination for a transformative
@@ -27,7 +29,9 @@ const WhoAreWe = () => {
                 at FitBuzz!
               </p>
               <p className="text-center">
-                <button className="btn btn-primary w-40 text-xl">Join Us</button>
+                <button className="btn btn-primary w-40 text-xl">
+                  Join Us
+                </button>
               </p>
             </div>
           </div>
