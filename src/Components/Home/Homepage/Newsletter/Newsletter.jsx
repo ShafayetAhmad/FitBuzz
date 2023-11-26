@@ -2,7 +2,7 @@ const Newsletter = () => {
   return (
     <div>
       <section>
-        <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
+        <div className="mx-auto w-full max-w-7xl px-5 py-8 md:px-10 md:py-12 lg:py-16">
           <div className="bg-[#f2f2f7] p-8 text-center sm:p-10 md:p-16">
             <h2 className="mb-4 text-3xl font-bold md:text-5xl">
               Join the Weekly Newsletter
