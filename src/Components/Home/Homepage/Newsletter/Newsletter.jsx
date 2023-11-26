@@ -5,12 +5,10 @@ const Newsletter = () => {
         <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32">
           <div className="bg-[#f2f2f7] p-8 text-center sm:p-10 md:p-16">
             <h2 className="mb-4 text-3xl font-bold md:text-5xl">
-              Join the Flowspark Community
+              Join the Weekly Newsletter
             </h2>
             <p className="mx-auto mb-6 max-w-2xl text-sm text-[#636262] sm:text-base md:mb-10 lg:mb-12">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-              aliquam, purus sit amet luctus venenatis, lectus magna fringilla
-              urna
+              Join our weekly Newsletter to get tips from our highly certified GYM trainers and neutritionists. It is free and will be always free.
             </p>
             <div className="mx-auto mb-4 flex max-w-lg justify-center">
               <form
@@ -25,7 +23,7 @@ const Newsletter = () => {
                 />
                 <input
                   type="submit"
-                  value="Notify me"
+                  value="Subscribe For Free"
                   className="cursor-pointer rounded-md bg-black px-6 py-2 font-semibold text-white"
                 />
               </form>
