@@ -1,24 +1,24 @@
 import { NavLink } from "react-router-dom";
-import lightLogo from "../../../../public/FitBuzz_Light_Logo.png";
+import lightLogo from "/FitBuzz_Light_Logo.png";
 const Navbar = () => {
   const navLinks = (
     <>
-      <li>
+      <li className="text-lg">
         <NavLink to="/">Home</NavLink>
       </li>
-      <li>
+      <li className="text-lg">
         <NavLink to="/Gallery">Gallery</NavLink>
       </li>
-      <li>
+      <li className="text-lg">
         <NavLink to="/Trainer">Trainer</NavLink>
       </li>
-      <li>
+      <li className="text-lg">
         <NavLink to="/all-classes">Classes</NavLink>
       </li>
-      <li>
+      <li className="text-lg">
         <NavLink to="/Dashboard">Dashboard</NavLink>
       </li>
-      <li>
+      <li className="text-lg">
         <NavLink to="/Forum">Forum</NavLink>
       </li>
     </>
@@ -52,7 +52,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a href="/">
-            <img src={lightLogo} className="lg:w-36"/>
+            <img src={lightLogo} className="lg:w-36" />
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
