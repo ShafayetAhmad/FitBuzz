@@ -1,16 +1,18 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
+
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
+import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 
-const UserLogin = () => {
+const UserLoginComp = () => {
   useEffect(() => {
-    document.title = "GigRapid | Login";
+    document.title = "FitBuzz | Login";
   }, []);
   const { userLogin, googleLogin } = useContext(AuthContext);
+
   const navigate = useNavigate();
   const location = useLocation();
   const [loginError, setLoginError] = useState(null);
@@ -59,15 +61,26 @@ const UserLogin = () => {
 
   return (
     <div className="lg:flex ">
+      <div className="flex-1 my-8 lg:ml-8 flex border-2 border-orange-500 ">
+        <img
+          src="https://i.ibb.co/0J7kjkt/featured-img-4.jpg"
+          className="justify-center items-center object-cover"
+          alt=""
+        />
+        {/*<div className="absolute text-white font-bold lg:text-7xl text-3xl ">
+          Start The <br />
+          <span className="lg:text-8xl text-4xl">Journey</span>
+        </div>*/}
+      </div>
       <section className="flex-1">
         <div className="py-4">
-          <div className="rounded-lg mx-auto max-w-xl bg-[#f2f2f7] dark:bg-gray-800 px-5 py-12 text-center md:px-10">
+          <div className="rounded-lg mx-auto max-w-xl bg-[#f2f2f7] px-5 py-12 text-center md:px-10">
             <h2 className="text-3xl font-bold mb-4 md:text-5xl">Login Now</h2>
 
             <button
               onClick={handleGoogleSignIn}
               href="#"
-              className="mx-auto flex max-w-sm justify-center bg-[#276ef1] px-8 py-4 text-center font-semibold text-white transition [box-shadow:rgb(171,_196,_245)_-8px_8px] hover:[box-shadow:rgb(171,_196,_245)_0px_0px] w-full"
+              className="mx-auto flex max-w-sm justify-center bg-orange-600 px-8 py-4 text-center font-semibold text-white transition [box-shadow:rgb(171,_196,_245)_-8px_8px] hover:[box-shadow:rgb(171,_196,_245)_0px_0px] w-full"
             >
               <FontAwesomeIcon icon={faGoogle} size="xl" className="mr-2" />
               <p className="font-bold">Log in with Google</p>
@@ -78,9 +91,7 @@ const UserLogin = () => {
                 alt=""
                 className="inline-block"
               />
-              <p className="text-sm text-[#647084] dark:text-white">
-                or Login with email
-              </p>
+              <p className="text-sm text-[#647084] ">or Login with email</p>
               <img
                 src="https://assets.website-files.com/6357722e2a5f19121d37f84d/6358f3d7490d1b3d86cf9442_Line%203.svg"
                 alt=""
@@ -130,9 +141,9 @@ const UserLogin = () => {
               <button
                 type="submit"
                 href="#"
-                className="flex max-w-full grid-cols-2 flex-row items-center justify-center bg-[#276ef1] px-8 py-4 text-center font-semibold text-white transition [box-shadow:rgb(171,_196,_245)_-8px_8px] hover:[box-shadow:rgb(171,_196,_245)_0px_0px] w-full"
+                className="flex max-w-full grid-cols-2 flex-row items-center justify-center bg-orange-600 px-8 py-4 text-center font-semibold text-white transition [box-shadow:rgb(171,_196,_245)_-8px_8px] hover:[box-shadow:rgb(171,_196,_245)_0px_0px] w-full"
               >
-                <p className="mr-6 font-bold">Login To GigRapid</p>
+                <p className="mr-6 font-bold">Login To FitBuzz</p>
                 <div className="h-4 w-4 flex-none">
                   <svg
                     fill="currentColor"
@@ -145,11 +156,11 @@ const UserLogin = () => {
                 </div>
               </button>
             </form>
-            <p className=" text-[#636262] dark:text-white">
+            <p className=" text-[#636262] ">
               Do not have an account?{" "}
               <Link
                 to={"/register"}
-                className="font-[Montserrat,_sans-serif] text-sm font-bold text-black dark:text-yellow-300 "
+                className="font-[Montserrat,_sans-serif] text-sm font-bold text-black "
               >
                 Register Now
               </Link>
@@ -160,4 +171,4 @@ const UserLogin = () => {
     </div>
   );
 };
-export default UserLogin;
+export default UserLoginComp;

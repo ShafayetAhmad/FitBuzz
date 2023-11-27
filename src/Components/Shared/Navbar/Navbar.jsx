@@ -1,6 +1,12 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import lightLogo from "/FitBuzz_Light_Logo.png";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout();
+  };
   const navLinks = (
     <>
       <li className="text-lg">
@@ -51,15 +57,15 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <a href="/">
+          <Link to="/">
             <img src={lightLogo} className="lg:w-36" />
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Login</a>
+          <Link className="btn btn-error font-bold text-white" to="/login">Login</Link>
         </div>
       </div>
     </>

@@ -8,89 +8,97 @@ import {
   signOut,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
-import Swal from "sweetalert2";
 import { auth } from "../../../../firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
+  const [loading, setLoading] = useState(true);
+  const googleAuthProvider = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(null);
-
-  const googleSignIn = async () => {
-    setLoading(true);
-    try {
-      await signInWithPopup(auth, GoogleAuthProvider);
-      Swal.fire("Logged In");
-    } catch (error) {
-      console.error(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const createUser = async (email, password) => {
+  const [registerError, setRegisterError] = useState(null);
+  const registerUser = async (email, password) => {
     setLoading(true);
     try {
       return await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
-      console.error("Error creating user:", error.code, error.message);
-      throw error;
+      console.log(error.message);
+      setRegisterError(error.message);
     } finally {
-      Swal.fire("New User Registered!");
       setLoading(false);
     }
   };
-  const logIn = (email, password) => {
+
+  const googleLogin = async () => {
+    setLoading(true);
+    try {
+      return await signInWithPopup(auth, googleAuthProvider);
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const userLogin = (email, password) => {
+    setLoading(true);
     try {
       return signInWithEmailAndPassword(auth, email, password);
     } catch (error) {
       console.log(error.message);
     } finally {
-      Swal.fire("User Logged In!");
+      setLoading(false);
     }
-    setLoading(true);
   };
 
-  const logOut = () => {
+  const logout = async () => {
     setLoading(true);
-    signOut(auth)
-      .then(() => {
-        Swal.fire("User Logged Out!");
-      })
-      .catch((error) => {
-        console.log(error.message);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    await signOut(auth);
+    setLoading(false);
   };
+
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log("user in the auth state changed", currentUser);
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
+      console.log("user on auth changed: ", currentUser);
       setUser(currentUser);
       setLoading(false);
+      if (currentUser) {
+        axios
+          .post("https://gig-rapid-server.vercel.app/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log("token response", res.data);
+          });
+      } else {
+        axios
+          .post("https://gig-rapid-server.vercel.app/logout", loggedUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
-    return () => {
-      unSubscribe();
-    };
-  }, []);
+    return () => unSubscribe();
+  }, [user]);
 
   return (
-    <div>
-      <AuthContext.Provider
-        value={{
-          user,
-          createUser,
-          googleSignIn,
-          logIn,
-          logOut,
-          loading,
-          setUser,
-        }}
-      >
-        {children}
-      </AuthContext.Provider>
-    </div>
+    <AuthContext.Provider
+      value={{
+        registerUser,
+        user,
+        logout,
+        userLogin,
+        googleLogin,
+        loading,
+        registerError,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
   );
 };
 

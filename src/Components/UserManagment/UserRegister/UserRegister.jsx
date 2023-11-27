@@ -85,7 +85,18 @@ const UserRegister = () => {
       });
   };
   return (
-    <div className="flex">
+    <div className="lg:flex">
+      <div className="flex-1 my-8 lg:ml-8 flex border-2 border-orange-500 ">
+        <img
+          src="https://i.ibb.co/0J7kjkt/featured-img-4.jpg"
+          className="justify-center items-center object-cover"
+          alt=""
+        />
+        {/*<div className="absolute text-white font-bold lg:text-7xl text-3xl ">
+          Start The <br />
+          <span className="lg:text-8xl text-4xl">Journey</span>
+        </div>*/}
+      </div>
       <section className="flex-1">
         <div className="py-4">
           <div className="mx-auto max-w-xl bg-[#f2f2f7] px-5 py-12 text-center md:px-10">
@@ -96,7 +107,7 @@ const UserRegister = () => {
             <button
               onClick={handleGoogleSignIn}
               href="#"
-              className="mx-auto flex max-w-sm justify-center bg-[#276ef1] px-8 py-4 text-center font-semibold text-white transition [box-shadow:rgb(171,_196,_245)_-8px_8px] hover:[box-shadow:rgb(171,_196,_245)_0px_0px] w-full"
+              className="mx-auto flex max-w-sm justify-center bg-orange-600 px-8 py-4 text-center font-semibold text-white transition [box-shadow:rgb(171,_196,_245)_-8px_8px] hover:[box-shadow:rgb(171,_196,_245)_0px_0px] w-full"
             >
               <img
                 src="https://assets.website-files.com/6357722e2a5f19121d37f84d/6357722e2a5f19d23637f876_GoogleLogo.svg"
@@ -192,9 +203,9 @@ const UserRegister = () => {
               <button
                 type="submit"
                 href="#"
-                className="flex max-w-full grid-cols-2 flex-row items-center justify-center bg-[#276ef1] px-8 py-4 text-center font-semibold text-white transition [box-shadow:rgb(171,_196,_245)_-8px_8px] hover:[box-shadow:rgb(171,_196,_245)_0px_0px] w-full"
+                className="flex max-w-full grid-cols-2 flex-row items-center justify-center bg-orange-600 px-8 py-4 text-center font-semibold text-white transition [box-shadow:rgb(171,_196,_245)_-8px_8px] hover:[box-shadow:rgb(171,_196,_245)_0px_0px] w-full"
               >
-                <p className="mr-6 font-bold">Join FlashTech</p>
+                <p className="mr-6 font-bold">Join FitBuzz</p>
                 <div className="h-4 w-4 flex-none">
                   <svg
                     fill="currentColor"
