@@ -6,17 +6,22 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { axiosSecure } from "../../Hooks/useAxiosSecure";
 
 const TrainerPage = () => {
   const [trainerData, setTrainerData] = useState([]);
 
   useEffect(() => {
-    fetch("/trainersCollection.json")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setTrainerData(data);
-      });
+    // fetch("/trainersCollection.json")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     setTrainerData(data);
+    //   });
+    axiosSecure.get("/getTrainersData").then((data) => {
+      console.log(data.data);
+      setTrainerData(data.data);
+    });
   }, []);
   return (
     <section className="services-section p-4 bg-slate-800">

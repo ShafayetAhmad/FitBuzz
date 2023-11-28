@@ -4,6 +4,7 @@ import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 
 const SingleBlog = () => {
   const { id } = useParams();
+  console.log(id);
   const [blogData, setBlogsData] = useState({});
   useEffect(() => {
     axiosSecure(`/getSingleBlog?id=${id}`).then((data) => {
