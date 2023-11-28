@@ -1,0 +1,114 @@
+[
+  {
+    "full_name": "John Smith",
+    "age": 32,
+    "skills": ["Weightlifting", "Cardio", "Nutrition"],
+    "image": "https://i.ibb.co/BCvMsT7/trainer-1.jpg",
+    "years_of_experience": 9,
+    "social_links": [
+      "https://twitter.com/johnsmith",
+      "https://www.instagram.com/johnsmith",
+      "https://www.facebook.com/johnsmith"
+    ],
+    "available_days_in_week": ["Monday", "Wednesday", "Friday"],
+    "available_time_in_day": "8:00 AM - 12:00 PM"
+  },
+  {
+    "full_name": "Emily Davis",
+    "age": 28,
+    "skills": ["Yoga", "Pilates", "Functional Training"],
+    "image": "https://i.ibb.co/gZSmHvy/trainer-2.png",
+    "years_of_experience": 6,
+    "social_links": [
+      "https://twitter.com/emilydavis",
+      "https://www.instagram.com/emilydavis",
+      "https://www.facebook.com/emilydavis"
+    ],
+    "available_days_in_week": ["Tuesday", "Thursday", "Saturday"],
+    "available_time_in_day": "9:00 AM - 1:00 PM"
+  },
+  {
+    "full_name": "Michael Johnson",
+    "age": 35,
+    "skills": ["CrossFit", "HIIT", "Athletic Conditioning"],
+    "image": "https://i.ibb.co/BL90DG3/trainer-3.png",
+    "years_of_experience": 10,
+    "social_links": [
+      "https://twitter.com/michaeljohnson",
+      "https://www.instagram.com/michaeljohnson",
+      "https://www.facebook.com/michaeljohnson"
+    ],
+    "available_days_in_week": ["Monday", "Wednesday", "Friday", "Sunday"],
+    "available_time_in_day": "4:00 PM - 8:00 PM"
+  },
+  {
+    "full_name": "Sarah Lee",
+    "age": 30,
+    "skills": ["Zumba", "Dance Fitness", "Kickboxing"],
+    "image": "https://i.ibb.co/H74D74h/trainer-4.jpg",
+    "years_of_experience": 7,
+    "social_links": [
+      "https://twitter.com/sarahlee",
+      "https://www.instagram.com/sarahlee",
+      "https://www.facebook.com/sarahlee"
+    ],
+    "available_days_in_week": ["Tuesday", "Thursday", "Saturday"],
+    "available_time_in_day": "10:00 AM - 2:00 PM"
+  },
+  {
+    "full_name": "David Rodriguez",
+    "age": 29,
+    "skills": ["Bodybuilding", "Strength Training", "Flexibility"],
+    "image": "https://i.ibb.co/yW9Xcbq/trainer-5.jpg",
+    "years_of_experience": 8,
+    "social_links": [
+      "https://twitter.com/davidrodriguez",
+      "https://www.instagram.com/davidrodriguez",
+      "https://www.facebook.com/davidrodriguez"
+    ],
+    "available_days_in_week": ["Monday", "Wednesday", "Thursday", "Friday"],
+    "available_time_in_day": "7:00 AM - 11:00 AM"
+  },
+  {
+    "full_name": "Alicia Wang",
+    "age": 31,
+    "skills": ["Pilates", "Yoga", "Functional Training"],
+    "image": "https://i.ibb.co/JmMzP42/trainer-6.jpg",
+    "years_of_experience": 9,
+    "social_links": [
+      "https://twitter.com/aliciawang",
+      "https://www.instagram.com/aliciawang",
+      "https://www.facebook.com/aliciawang"
+    ],
+    "available_days_in_week": ["Wednesday", "Thursday", "Saturday", "Sunday"],
+    "available_time_in_day": "3:00 PM - 7:00 PM"
+  },
+  {
+    "full_name": "Mark Taylor",
+    "age": 34,
+    "skills": ["Boxing", "Functional Training", "Cardio"],
+    "image": "https://i.ibb.co/1ZRjDF3/trainer-7.jpg",
+    "years_of_experience": 11,
+    "social_links": [
+      "https://twitter.com/marktaylor",
+      "https://www.instagram.com/marktaylor",
+      "https://www.facebook.com/marktaylor"
+    ],
+    "available_days_in_week": ["Monday", "Tuesday", "Thursday", "Saturday"],
+    "available_time_in_day": "5:00 PM - 9:00 PM"
+  },
+  {
+    "full_name": "Emma Garcia",
+    "age": 27,
+    "skills": ["CrossFit", "HIIT", "Functional Training"],
+    "image": "https://i.ibb.co/xGmW9D0/trainer-8.jpg",
+    "years_of_experience": 5,
+    "social_links": [
+      "https://twitter.com/emmagarcia",
+      "https://www.instagram.com/emmagarcia",
+      "https://www.facebook.com/emmagarcia"
+    ],
+    "available_days_in_week": ["Tuesday", "Wednesday", "Friday", "Sunday"],
+    "available_time_in_day": "6:00 AM - 10:00 AM"
+  }
+]

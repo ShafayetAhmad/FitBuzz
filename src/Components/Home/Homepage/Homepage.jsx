@@ -1,3 +1,4 @@
+import AllBlogs from "../../AllBlogs/AllBlogs";
 import Banner from "../Banner/Banner";
 import ClassesForYou from "./ClassesForYou/ClassesForYou";
 import Featured from "./Featured/Featured";
@@ -16,6 +17,7 @@ const Homepage = () => {
             <Testimonials></Testimonials>
             <Newsletter></Newsletter>
             <OurTrainers></OurTrainers>
+            <AllBlogs></AllBlogs>
         </div>
     );
 };

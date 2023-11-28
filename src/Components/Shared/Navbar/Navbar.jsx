@@ -18,12 +18,12 @@ const Navbar = () => {
         <NavLink to="/Gallery">Gallery</NavLink>
       </li>
       <li className="text-lg">
-        <NavLink to="/Trainer">Trainer</NavLink>
+        <NavLink to="/Trainers">Trainers</NavLink>
       </li>
       <li className="text-lg">
         <NavLink to="/all-classes">Classes</NavLink>
       </li>
-      <li className="text-lg">
+      <li className="text-lg">  
         <NavLink to="/Dashboard">Dashboard</NavLink>
       </li>
       <li className="text-lg">

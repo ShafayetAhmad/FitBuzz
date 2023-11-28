@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useState, useEffect } from "react";
-import { faLinesLeaning } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faHatCowboy, faLinesLeaning } from "@fortawesome/free-solid-svg-icons";
 
 const ClassesForYou = () => {
   const [classesData, setClassesData] = useState([]);
@@ -16,8 +16,17 @@ const ClassesForYou = () => {
 
   return (
     <div className="my-8 ">
-      <h3>Our Top Classes For You</h3>
-      <h3>Join Now</h3>
+      <div className="pb-8 text-black w-full text-center">
+        <h1 className="text-4xl  font-bold text-center mt-16">
+          <FontAwesomeIcon icon={faHatCowboy}></FontAwesomeIcon>
+          <span className="mx-8"> Our Top Classes For You</span>
+          <FontAwesomeIcon icon={faHatCowboy}></FontAwesomeIcon>
+        </h1>
+        <h5 className="font-bold text-3xl mt-4">
+          <FontAwesomeIcon icon={faClock} color="red"></FontAwesomeIcon> Join
+          Now <FontAwesomeIcon icon={faClock} color="red"></FontAwesomeIcon>
+        </h5>
+      </div>
       {classesData.map((classItem, index) => (
         <div
           key={index}
