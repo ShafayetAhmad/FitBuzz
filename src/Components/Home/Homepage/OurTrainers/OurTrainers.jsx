@@ -5,7 +5,7 @@ const OurTrainers = () => {
         <div className="mx-auto w-full max-w-7xl px-5 py-8 md:px-10 md:py-12 lg:py-16">
           <div className="text-center">
             <h2 className="text-3xl font-semibold md:text-5xl">
-              Our {" "}
+              Our {" "}<br/>
               <span className="bg-cover bg-center px-4 text-white bg-green-500">
                 Coaches and Trainers
               </span>

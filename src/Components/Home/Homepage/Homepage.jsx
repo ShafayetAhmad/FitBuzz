@@ -1,4 +1,5 @@
 import Banner from "../Banner/Banner";
+import ClassesForYou from "./ClassesForYou/ClassesForYou";
 import Featured from "./Featured/Featured";
 import Newsletter from "./Newsletter/Newsletter";
 import OurTrainers from "./OurTrainers/OurTrainers";
@@ -11,6 +12,7 @@ const Homepage = () => {
             <Banner></Banner>
             <Featured></Featured>
             <WhoAreWe></WhoAreWe>
+            <ClassesForYou></ClassesForYou>
             <Testimonials></Testimonials>
             <Newsletter></Newsletter>
             <OurTrainers></OurTrainers>

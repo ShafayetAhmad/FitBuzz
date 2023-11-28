@@ -64,7 +64,7 @@ const AuthProvider = ({ children }) => {
       console.log("user on auth changed: ", currentUser);
       setUser(currentUser);
       setLoading(false);
-      if (currentUser) {
+        {/*if (currentUser) {
         axios
           .post("https://gig-rapid-server.vercel.app/jwt", loggedUser, {
             withCredentials: true,
@@ -80,7 +80,8 @@ const AuthProvider = ({ children }) => {
           .then((res) => {
             console.log(res.data);
           });
-      }
+      }}*/
+        }
     });
     return () => unSubscribe();
   }, [user]);

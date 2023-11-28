@@ -2,6 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import lightLogo from "/FitBuzz_Light_Logo.png";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestion } from "@fortawesome/free-solid-svg-icons";
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const handleLogout = () => {
@@ -29,9 +31,10 @@ const Navbar = () => {
       </li>
     </>
   );
+
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-100 font-bold">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -65,7 +68,32 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          <Link className="btn btn-error font-bold text-white" to="/login">Login</Link>
+          {user ? (
+            <div className="text-center lg:text-base sm:text-xs flex">
+              {user?.userName}
+              <img
+                src={user.photoURL}
+                className="lg:w-12 lg: w-8 h-8 items-center rounded-full"
+              ></img>
+            </div>
+          ) : (
+            <FontAwesomeIcon icon={faQuestion} size="xl"></FontAwesomeIcon>
+          )}
+
+          {user ? (
+            <button
+              className="btn btn-warning lg:w-fit w-16 lg:text-base text-sm"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link to={"/login"}>
+              <button className="btn btn-warning lg:w-fit w-16 lg:text-base text-xs">
+                Login/ <br></br>Register
+              </button>
+            </Link>
+          )}
         </div>
       </div>
     </>
