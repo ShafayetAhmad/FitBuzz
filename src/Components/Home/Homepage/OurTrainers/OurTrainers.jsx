@@ -6,7 +6,7 @@ const OurTrainers = () => {
           <div className="text-center">
             <h2 className="text-3xl font-semibold md:text-5xl">
               Our {" "}<br/>
-              <span className="bg-cover bg-center px-4 text-white bg-green-500">
+              <span className="bg-cover bg-center px-4 text-white bg-orange-500">
                 Coaches and Trainers
               </span>
             </h2>

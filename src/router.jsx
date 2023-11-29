@@ -9,6 +9,7 @@ import AllClasses from "./Components/AllClasses/AllClasses";
 import SingleBlog from "./Components/AllBlogs/SingleBlog/SingleBlog";
 import TrainerPage from "./Components/TrainerPage/TrainerPage";
 import TrainerDetails from "./Components/TrainerPage/TrainerDetails/TrainerDetails";
+import BeATrainer from "./Components/TrainerPage/BeATrainer/BeATrainer";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/trainers/:id",
         element: <TrainerDetails></TrainerDetails>,
+      },
+      {
+        path: "/be-a-trainer",
+        element: <BeATrainer></BeATrainer>,
       },
     ],
   },

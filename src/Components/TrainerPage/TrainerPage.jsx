@@ -41,7 +41,7 @@ const TrainerPage = () => {
                 className="w-full h-[400px] object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">{trainer.full_name}</h3>
+                <h3 className="text-3xl font-bold mb-2">{trainer.full_name}</h3>
                 <p className="text-orange-700 mb-4 font-bold text-2xl">
                   {trainer.years_of_experience} Years Of Experience
                 </p>
