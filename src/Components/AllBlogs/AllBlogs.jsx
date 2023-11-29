@@ -3,7 +3,7 @@ import { axiosSecure } from "../../Hooks/useAxiosSecure";
 import BlogBody from "./BlogBody/BlogBody";
 
 const AllBlogs = () => {
-  const [blogsData, setBlogsData] = useState([]);
+  const [blogsData, setBlogsData] = useState(null);
 
   useEffect(() => {
     axiosSecure.get("/getAllBlogs").then((data) => {
@@ -20,7 +20,7 @@ const AllBlogs = () => {
           </h2>
 
           <div className="">
-            {blogsData.map((blog, index) => (
+            {blogsData?.map((blog, index) => (
               <BlogBody blog={blog} key={index}></BlogBody>
             ))}
           </div>

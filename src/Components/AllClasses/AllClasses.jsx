@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartPulse } from "@fortawesome/free-solid-svg-icons";
 
 const AllClasses = () => {
-  const [allClasses, setAllClasses] = useState([]);
+  const [allClasses, setAllClasses] = useState(null);
   useEffect(() => {
     axiosSecure.get("/getAllClasses").then((data) => {
       setAllClasses(data.data);

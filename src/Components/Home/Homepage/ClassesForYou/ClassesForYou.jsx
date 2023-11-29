@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { faClock, faHatCowboy, faLinesLeaning } from "@fortawesome/free-solid-svg-icons";
 
 const ClassesForYou = () => {
-  const [classesData, setClassesData] = useState([]);
+  const [classesData, setClassesData] = useState(null);
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const ClassesForYou = () => {
           Now <FontAwesomeIcon icon={faClock} color="red"></FontAwesomeIcon>
         </h5>
       </div>
-      {classesData.map((classItem, index) => (
+      {classesData?.map((classItem, index) => (
         <div
           key={index}
           className="grid h-40 grid-cols-10 w-full text-white rounded-3xl"

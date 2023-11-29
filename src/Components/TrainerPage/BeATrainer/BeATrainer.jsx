@@ -5,7 +5,6 @@ const BeATrainer = () => {
   const [img, setImg] = useState({});
   const formRef = useRef(null);
 
-  const [proPicLink, setProPicLink] = useState(null);
   const handleImageLink = async (e) => {
     const image = e?.target?.files?.[0];
     setImg({ image: image });
@@ -51,11 +50,11 @@ const BeATrainer = () => {
         { headers: { "content-type": "multipart/form-data" } }
       );
       console.log("Image uploaded:", response.data.data.display_url);
-      setProPicLink(response.data.data.display_url);
       const formData = new FormData(formRef.current);
       const fullName = formData.get("fullName");
       const DOB = formData.get("dob");
-      const profilePicture = proPicLink;
+      const age = calculateAge(DOB);
+      const profilePicture = response.data.data.display_url;
       const trainerSkills = skills;
       const startHour = formData.get("startHour");
       const startampm = formData.get("startampm");
@@ -66,17 +65,22 @@ const BeATrainer = () => {
 
       const trainingDays = days;
       const hourSlots = convertToHourSlots(startTime, endTime);
+      const trainerStatus = "pending";
 
-      console.log(
-        fullName,
-        DOB,
-        profilePicture,
-        trainerSkills,
-        startTime,
-        endTime,
-        trainingDays,
-        hourSlots
-      );
+      const trainerFolio = {
+        fullName: fullName,
+        age: age,
+        profilePicture: profilePicture,
+        trainerSkills: trainerSkills,
+        startTime: startTime,
+        endTime: endTime,
+        trainingDays: trainingDays,
+        hourSlots: hourSlots,
+        trainerStatus: trainerStatus,
+      };
+      axiosSecure
+        .post("/add-trainer", trainerFolio)
+        .then((res) => console.log(res));
     } catch (error) {
       console.error("Error uploading image:", error);
     }
@@ -117,6 +121,22 @@ const BeATrainer = () => {
     }
 
     return slots;
+  };
+  const calculateAge = (dob) => {
+    const birthDate = new Date(dob);
+    const today = new Date();
+
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDifference = today.getMonth() - birthDate.getMonth();
+
+    if (
+      monthDifference < 0 ||
+      (monthDifference === 0 && today.getDate() < birthDate.getDate())
+    ) {
+      age--;
+    }
+
+    return age;
   };
 
   const startTime = "7:00AM";
