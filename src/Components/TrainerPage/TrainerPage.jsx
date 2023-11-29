@@ -74,6 +74,12 @@ const TrainerPage = () => {
             </div>
           ))}
         </div>
+        <Link
+          to="/be-a-trainer"
+          className="h-20 w-full bg-black my-10 rounded-3xl text-white hover:bg-orange-500 transition-transform hover:text-black font-bold text-4xl flex items-center justify-center underline"
+        >
+          Become A Trainer, Apply Now!
+        </Link>
       </div>
     </section>
   );

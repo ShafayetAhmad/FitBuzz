@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
+import { axiosSecure } from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const UserLoginComp = () => {
   useEffect(() => {
@@ -28,11 +30,16 @@ const UserLoginComp = () => {
           userEmail: email,
           photoURL: photoUrl,
         };
-        axios
-          .post(" ", {
+        axiosSecure
+          .post("/add-user", {
             userDetails,
           })
-          .then((res) => console.log(res))
+          .then((res) => {
+            console.log(res);
+            if (res.data.insertedId) {
+              Swal("Logged In Succesfully");
+            }
+          })
           .catch((err) => console.log(err));
         navigate(location?.state ? location.state : "/");
       })

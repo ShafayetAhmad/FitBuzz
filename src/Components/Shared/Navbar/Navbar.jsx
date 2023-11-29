@@ -1,14 +1,33 @@
 import { Link, NavLink } from "react-router-dom";
 import lightLogo from "/FitBuzz_Light_Logo.png";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestion } from "@fortawesome/free-solid-svg-icons";
+import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
+  console.log(user);
   const handleLogout = () => {
     logout();
   };
+  const [userFromDB, setUserFromDB] = useState();
+
+  useEffect(() => {
+    const fetchUserDataFromDB = async () => {
+      try {
+        const response = await axiosSecure.get(
+          `/get-user?email=${user?.email}`
+        );
+        const userData = response.data;
+        console.log(userData);
+        setUserFromDB(userData);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    fetchUserDataFromDB();
+  }, [user]);
   const navLinks = (
     <>
       <li className="text-lg">
@@ -23,7 +42,7 @@ const Navbar = () => {
       <li className="text-lg">
         <NavLink to="/all-classes">Classes</NavLink>
       </li>
-      <li className="text-lg">  
+      <li className="text-lg">
         <NavLink to="/Dashboard">Dashboard</NavLink>
       </li>
       <li className="text-lg">
@@ -68,11 +87,11 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
         <div className="navbar-end">
-          {user ? (
+          {userFromDB ? (
             <div className="text-center lg:text-base sm:text-xs flex">
-              {user?.userName}
+              {userFromDB?.userName}
               <img
-                src={user.photoURL}
+                src={userFromDB.photoURL}
                 className="lg:w-12 lg: w-8 h-8 items-center rounded-full"
               ></img>
             </div>

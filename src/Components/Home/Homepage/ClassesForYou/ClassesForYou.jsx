@@ -72,7 +72,7 @@ const ClassesForYou = () => {
                 color="red"
                 className="pr-3"
               ></FontAwesomeIcon>
-              CLASS TIME
+              INSTRUCTOR
             </p>
             <h3 className="font-bold text-3xl">{classItem.trainer}</h3>
           </div>

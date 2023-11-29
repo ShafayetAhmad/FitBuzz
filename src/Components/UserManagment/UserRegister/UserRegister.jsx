@@ -2,8 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faImage, faLock, faUserTie } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faImage,
+  faLock,
+  faUserTie,
+} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 
 const UserRegister = () => {
   useEffect(() => {
@@ -14,6 +20,7 @@ const UserRegister = () => {
   const [passwordError, setPasswordError] = useState(null);
   const { registerUser, googleLogin, registerError } = useContext(AuthContext);
   const handleGoogleSignIn = () => {
+    console.log("in google login")
     googleLogin()
       .then((userCredentials) => {
         console.log(userCredentials);
@@ -25,8 +32,8 @@ const UserRegister = () => {
           userEmail: email,
           photoURL: photoUrl,
         };
-        axios
-          .post("  /add-user", {
+        axiosSecure
+          .post("/add-user", {
             userDetails,
           })
           .then((res) => console.log(res))

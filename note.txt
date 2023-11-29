@@ -9,3 +9,6 @@ featured-imgs
 https://i.ibb.co/0J7kjkt/featured-img-4.jpg
 https://i.ibb.co/P5P1NPz/featured-img-5.jpg
 https://i.ibb.co/DVSqXjV/featured-img-6.webp
+
+
+imgbb api: 00ec1d814cd1395015cc3d3f30d0f4da
