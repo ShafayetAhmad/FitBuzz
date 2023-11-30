@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import {  useRef, useState } from "react";
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 
 const BeATrainer = () => {
@@ -63,20 +63,31 @@ const BeATrainer = () => {
       const endampm = formData.get("endampm");
       const endTime = `${endHour}:00${endampm}`;
 
-      const trainingDays = days;
+      const trainingDays = Object.keys(days);
       const hourSlots = convertToHourSlots(startTime, endTime);
+
+      // eslint-disable-next-line no-unused-vars
+      const availability = trainingDays.map((day) => {
+        const dayAvailability = {};
+        const tempSlot = Object.values(hourSlots);
+        tempSlot.forEach((slot) => {
+          dayAvailability[slot] = true;
+        });
+        return dayAvailability;
+      });
       const trainerStatus = "pending";
 
       const trainerFolio = {
-        fullName: fullName,
+        full_name: fullName,
         age: age,
-        profilePicture: profilePicture,
-        trainerSkills: trainerSkills,
+        image: profilePicture,
+        skills: trainerSkills,
         startTime: startTime,
         endTime: endTime,
-        trainingDays: trainingDays,
-        hourSlots: hourSlots,
+        available_days_in_week: trainingDays,
+        available_time_in_day: hourSlots,
         trainerStatus: trainerStatus,
+        availability: availability,
       };
       axiosSecure
         .post("/add-trainer", { trainerFolio: trainerFolio })
@@ -117,7 +128,7 @@ const BeATrainer = () => {
         hour: "2-digit",
         minute: "2-digit",
       });
-      slots.push({ [`${slotStart}-${slotEnd}`]: false });
+      slots.push(`${slotStart}-${slotEnd}`);
     }
 
     return slots;
@@ -138,12 +149,6 @@ const BeATrainer = () => {
 
     return age;
   };
-
-  const startTime = "7:00AM";
-  const endTime = "10:00AM";
-
-  const hourSlots = convertToHourSlots(startTime, endTime);
-  console.log(hourSlots);
 
   return (
     <div>

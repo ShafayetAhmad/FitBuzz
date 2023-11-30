@@ -23,6 +23,7 @@ const TrainerPage = () => {
       setTrainerData(data.data);
     });
   }, []);
+  if (trainerData.length == 0) return <div>Loading</div>;
   return (
     <section className="services-section p-4 bg-slate-800">
       <div className="container mx-auto">
@@ -30,7 +31,7 @@ const TrainerPage = () => {
           Our Trainers
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {trainerData.map((trainer, index) => (
+          {trainerData?.map((trainer, index) => (
             <div
               key={index}
               className="text-white rounded-lg overflow-hidden shadow-md hover:scale-105 border-2 border-orange-500 transition-transform bg-gray-800"
@@ -47,19 +48,19 @@ const TrainerPage = () => {
                 </p>
                 <div className="flex justify-between items-center">
                   <div className="flex gap-2">
-                    <a href={trainer.social_links[0]}>
+                    <a href={trainer.social_links && trainer.social_links[0]}>
                       <FontAwesomeIcon
                         icon={faTwitter}
                         size="2xl"
                       ></FontAwesomeIcon>
                     </a>
-                    <a href={trainer.social_links[1]}>
+                    <a href={trainer.social_links && trainer.social_links[1]}>
                       <FontAwesomeIcon
                         icon={faInstagram}
                         size="2xl"
                       ></FontAwesomeIcon>
                     </a>
-                    <a href={trainer.social_links[2]}>
+                    <a href={trainer.social_links && trainer.social_links[2]}>
                       <FontAwesomeIcon
                         icon={faFacebook}
                         size="2xl"

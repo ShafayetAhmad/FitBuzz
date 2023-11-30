@@ -78,16 +78,12 @@ const UserRegister = () => {
       .then((userCredentials) => {
         console.log(userCredentials);
         axiosSecure
-          .post("  /add-user", {
+          .post("/add-user", {
             userDetails,
           })
-          .then((res) => {
-            console.log(res);
-            navigate(location?.state ? location.state : "/");
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+          .then((res) => console.log(res))
+          .catch((err) => console.log(err));
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         console.log(error.message);
