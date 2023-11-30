@@ -1,4 +1,4 @@
-import {  useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 
 const BeATrainer = () => {
@@ -26,11 +26,11 @@ const BeATrainer = () => {
     Other: false,
   });
   const [days, setDays] = useState({
+    Monday: false,
     Tuesday: false,
     Wednesday: false,
     Thursday: false,
     Friday: false,
-    Monday: false,
     SaturDay: false,
   });
   const handleSkillsChange = (e) => {

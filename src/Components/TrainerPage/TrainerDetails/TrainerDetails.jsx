@@ -72,11 +72,11 @@ const TrainerDetails = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mt-20">
         <div className="availability-table text-white ">
           <table>
             <thead>
-              <tr>
+              <tr className="font-bold text-4xl ">
                 <th>Day</th>
                 <th>Availability</th>
               </tr>
@@ -84,11 +84,11 @@ const TrainerDetails = () => {
             <tbody>
               {trainerAvailability?.map((item, index) => (
                 <tr key={index}>
-                  <td>{days[index]}</td>
+                  <td className="my-8 font-bold text-2xl">{days[index]}</td>
                   <td>
                     <ul className="flex flex-row gap-16">
                       {Object.entries(item).map(([timeSlot, available]) => (
-                        <li key={timeSlot} className="flex gap-8">
+                        <li key={timeSlot} className="flex gap-8 justify-center items-center border-4 px-8 py-3">
                           {timeSlot}:{" "}
                           {available ? (
                             <div>
