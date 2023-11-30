@@ -26,11 +26,11 @@ const BeATrainer = () => {
     Other: false,
   });
   const [days, setDays] = useState({
-    Monday: false,
     Tuesday: false,
     Wednesday: false,
     Thursday: false,
     Friday: false,
+    Monday: false,
     SaturDay: false,
   });
   const handleSkillsChange = (e) => {
