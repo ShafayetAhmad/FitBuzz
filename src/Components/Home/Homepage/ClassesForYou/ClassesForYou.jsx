@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { faClock, faHatCowboy, faLinesLeaning } from "@fortawesome/free-solid-svg-icons";
 
 const ClassesForYou = () => {
-  const [classesData, setClassesData] = useState(null);
+  const [classesData, setClassesData] = useState([]);
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import { axiosSecure } from "../../Hooks/useAxiosSecure";
 import BlogBody from "./BlogBody/BlogBody";
 
 const AllBlogs = () => {
-  const [blogsData, setBlogsData] = useState(null);
+  const [blogsData, setBlogsData] = useState([]);
 
   useEffect(() => {
     axiosSecure.get("/getAllBlogs").then((data) => {

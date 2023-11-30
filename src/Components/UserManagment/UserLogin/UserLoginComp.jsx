@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
@@ -29,6 +28,7 @@ const UserLoginComp = () => {
           userName: name,
           userEmail: email,
           photoURL: photoUrl,
+          userRole: "user",
         };
         axiosSecure
           .post("/add-user", {

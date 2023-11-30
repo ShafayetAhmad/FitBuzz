@@ -79,7 +79,7 @@ const BeATrainer = () => {
         trainerStatus: trainerStatus,
       };
       axiosSecure
-        .post("/add-trainer", trainerFolio)
+        .post("/add-trainer", { trainerFolio: trainerFolio })
         .then((res) => console.log(res));
     } catch (error) {
       console.error("Error uploading image:", error);

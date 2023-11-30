@@ -8,7 +8,7 @@ import {
   faLock,
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
-import axios from "axios";
+
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 
 const UserRegister = () => {
@@ -20,7 +20,7 @@ const UserRegister = () => {
   const [passwordError, setPasswordError] = useState(null);
   const { registerUser, googleLogin, registerError } = useContext(AuthContext);
   const handleGoogleSignIn = () => {
-    console.log("in google login")
+    console.log("in google login");
     googleLogin()
       .then((userCredentials) => {
         console.log(userCredentials);
@@ -31,6 +31,7 @@ const UserRegister = () => {
           userName: name,
           userEmail: email,
           photoURL: photoUrl,
+          userRole: "user",
         };
         axiosSecure
           .post("/add-user", {
@@ -71,11 +72,12 @@ const UserRegister = () => {
       userName: name,
       userEmail: email,
       photoURL: photoUrl,
+      userRole: "user",
     };
     registerUser(email, password)
       .then((userCredentials) => {
         console.log(userCredentials);
-        axios
+        axiosSecure
           .post("  /add-user", {
             userDetails,
           })
