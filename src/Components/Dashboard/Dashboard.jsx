@@ -23,11 +23,9 @@ const Dashboard = () => {
         <AdminDashboard user={userDetails}></AdminDashboard>
       )}{" "}
       {userRole == "trainer" && (
-        <TrainerDashboard
-          user={userDetails}
-        ></TrainerDashboard>
+        <TrainerDashboard user={userDetails}></TrainerDashboard>
       )}{" "}
-      {userRole == "user" && <UserDashboard></UserDashboard>}
+      {userRole == "user" && <UserDashboard user={userDetails}></UserDashboard>}
     </div>
   );
 };

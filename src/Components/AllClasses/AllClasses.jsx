@@ -3,6 +3,7 @@ import { axiosSecure } from "../../Hooks/useAxiosSecure";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartPulse } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AllClasses = () => {
   const [allClasses, setAllClasses] = useState([]);
@@ -14,6 +15,11 @@ const AllClasses = () => {
     const bookSlot = { slotId: classItem._id, userEmail: user.email };
     axiosSecure.post("/bookSlot", bookSlot).then((res) => {
       console.log(res.data);
+    });
+    Swal.fire("Booked Successfully");
+    axiosSecure.get("/getAllClasses").then((data) => {
+      setAllClasses(data.data);
+      console.log(data.data);
     });
   };
   const days = [
