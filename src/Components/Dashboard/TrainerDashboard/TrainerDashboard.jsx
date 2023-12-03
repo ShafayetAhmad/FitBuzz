@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
+import AddNewForum from "../AddNewForum/AddNewForum";
 
 const TrainerDashboard = ({ user }) => {
   const days = [
@@ -32,7 +33,7 @@ const TrainerDashboard = ({ user }) => {
       <p className="text-center font-bold text-3xl pb-10">
         Have a look at All your Slots
       </p>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 mx-10">
+      <div className="grid grid-cols-3 gap-4 mx-10">
         {slotsDetails?.map((slot, index) => (
           <div
             key={index}
@@ -74,7 +75,9 @@ const TrainerDashboard = ({ user }) => {
                       />
                     </div>
                     <div className="p-4 text-center">
-                      <p className="text-xl font-semibold">Name: {user.userName}</p>
+                      <p className="text-xl font-semibold">
+                        Name: {user.userName}
+                      </p>
                       <p className="text-gray-600">Email: {user.userEmail}</p>
                       <button className="btn btn-error mt-4 transition duration-300 ease-in-out transform hover:scale-105 text-white">
                         Send Email
@@ -86,6 +89,7 @@ const TrainerDashboard = ({ user }) => {
             ))}
           {bookedUsers.length === 0 && <p>No students enrolled yet.</p>}
         </div>
+        <AddNewForum></AddNewForum>
       </div>
     </div>
   );

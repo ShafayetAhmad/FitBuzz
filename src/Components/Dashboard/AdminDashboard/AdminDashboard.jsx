@@ -9,6 +9,7 @@ import {
   faLinesLeaning,
 } from "@fortawesome/free-solid-svg-icons";
 import moment from "moment";
+import AddNewForum from "../AddNewForum/AddNewForum";
 
 /* eslint-disable react/prop-types */
 const AdminDashboard = ({ user }) => {
@@ -24,11 +25,23 @@ const AdminDashboard = ({ user }) => {
     "Friday",
     "Saturday",
   ];
+  
 
   const acceptTrainerRequest = () => {
     const trainerEmail = selectedRequest.email;
     axiosSecure
       .post("/accept-trainer", { email: trainerEmail })
+      .then((data) => {
+        console.log(data.data);
+        axiosSecure.get("/getTrainerRequests").then((data) => {
+          settrainerRequests(data.data);
+        });
+      });
+  };
+  const rejectTrainerRequest = () => {
+    const trainerEmail = selectedRequest.email;
+    axiosSecure
+      .post("/reject-trainer", { email: trainerEmail })
       .then((data) => {
         console.log(data.data);
         axiosSecure.get("/getTrainerRequests").then((data) => {
@@ -291,7 +304,12 @@ const AdminDashboard = ({ user }) => {
                         <form method="dialog">
                           <div className="flex gap-4">
                             {" "}
-                            <button className="btn">Reject</button>
+                            <button
+                              className="btn"
+                              onClick={rejectTrainerRequest}
+                            >
+                              Reject
+                            </button>
                             <button
                               className="btn"
                               onClick={acceptTrainerRequest}
@@ -301,6 +319,7 @@ const AdminDashboard = ({ user }) => {
                           </div>
                         </form>
                       </div>
+                      <AddNewForum></AddNewForum>
                     </div>
                   </dialog>
                 </div>
