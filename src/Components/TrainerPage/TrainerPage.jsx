@@ -46,6 +46,10 @@ const TrainerPage = () => {
                 <p className="text-orange-700 mb-4 font-bold text-2xl">
                   {trainer.years_of_experience} Years Of Experience
                 </p>
+                <p className="text-white-700 mb-4 font-bold text-md">
+                  Training Time:{" "}
+                  {trainer.startTime} - {trainer.endTime} 
+                </p>
                 <div className="flex justify-between items-center">
                   <div className="flex gap-2">
                     <a href={trainer.social_links && trainer.social_links[0]}>

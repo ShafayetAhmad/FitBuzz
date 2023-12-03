@@ -13,6 +13,7 @@ import BeATrainer from "./Components/TrainerPage/BeATrainer/BeATrainer";
 import PrivateRoute from "./PrivateRoute";
 import UserBooked from "./Components/UserBooked/UserBooked";
 import Dashboard from "./Components/Dashboard/Dashboard";
+import PaymentPage from "./Components/PaymentPage/PaymentPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -68,6 +69,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Dashboard></Dashboard>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/payment-page",
+        element: (
+          <PrivateRoute>
+            <PaymentPage></PaymentPage>
           </PrivateRoute>
         ),
       },

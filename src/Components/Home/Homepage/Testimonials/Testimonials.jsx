@@ -19,7 +19,7 @@ const Testimonials = () => {
               </p>
               <div className="flex">
                 <img
-                  src="https://assets.website-files.com/6357722e2a5f19121d37f84d/6358cb67bf1bca198e298c35_Ellipse%205-2.png"
+                  src="https://assets.website-files.com/6357722e2a5f19121d37f84d/6358cb614a296368b383467c_Ellipse%205-3.png"
                   alt=""
                   className="mr-4 h-16 w-16"
                 />

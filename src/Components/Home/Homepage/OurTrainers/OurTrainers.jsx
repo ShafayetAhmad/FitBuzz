@@ -5,7 +5,7 @@ const OurTrainers = () => {
         <div className="mx-auto w-full max-w-7xl px-5 py-8 md:px-10 md:py-12 lg:py-16">
           <div className="text-center">
             <h2 className="text-3xl font-semibold md:text-5xl">
-              Our {" "}<br/>
+              Our <br />
               <span className="bg-cover bg-center px-4 text-white bg-orange-500">
                 Coaches and Trainers
               </span>
@@ -22,7 +22,13 @@ const OurTrainers = () => {
                 className="mb-4 inline-block h-56 w-full rounded-xl object-cover lg:h-56"
               />
               <p className="mb-2 font-bold">John Brooklyn</p>
-              <p className="mb-2 text-sm text-[#636262]">Developer</p>
+              <p className="mb-2 text-sm text-[#636262]">
+                Experienced fitness enthusiast and certified trainer dedicated
+                to guiding individuals toward their health and wellness goals.
+                Passionate about crafting tailored workout programs for every
+                fitness level, fostering positive transformations, and inspiring
+                a lifelong commitment to a healthier lifestyle.
+              </p>
               <div className="mt-4 flex flex-wrap">
                 <a
                   href="#"
@@ -58,12 +64,17 @@ const OurTrainers = () => {
             </div>
             <div className="flex flex-col items-center justify-center gap-4 rounded-xl border border-solid border-[#636262] p-4 [box-shadow:rgb(0,_0,_0)_6px_6px]">
               <img
-                src="https://assets.website-files.com/63904f663019b0d8edf8d57c/63980b3c3c019a6473ee5b4e_Rectangle%2040024-1.jpg"
+                src="https://i.ibb.co/xGmW9D0/trainer-8.jpg"
                 alt=""
                 className="mb-4 inline-block h-56 w-full rounded-xl object-cover lg:h-56"
               />
               <p className="mb-2 font-bold">John Brooklyn</p>
-              <p className="mb-2 text-sm text-[#636262]">Developer</p>
+              <p className="mb-2 text-sm text-[#636262]">
+                Empowering clients to redefine their fitness journeys through
+                personalized training, nutritional guidance, and unwavering
+                support. Committed to fostering a motivating environment that
+                fuels success, one workout at a time.
+              </p>
               <div className="mt-4 flex flex-wrap">
                 <a
                   href="#"
@@ -104,7 +115,12 @@ const OurTrainers = () => {
                 className="mb-4 inline-block h-56 w-full rounded-xl object-cover lg:h-56"
               />
               <p className="mb-2 font-bold">John Brooklyn</p>
-              <p className="mb-2 text-sm text-[#636262]">Developer</p>
+              <p className="mb-2 text-sm text-[#636262]">
+                Guiding fitness enthusiasts to unlock their potential, achieve
+                goals, and embrace a healthier lifestyle. Dedicated to crafting
+                tailored workouts, providing expert guidance, and inspiring
+                transformative change.
+              </p>
               <div className="mt-4 flex flex-wrap">
                 <a
                   href="#"

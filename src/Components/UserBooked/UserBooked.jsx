@@ -1,16 +1,36 @@
 import { faHeartPulse } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
+import { axiosSecure } from "../../Hooks/useAxiosSecure";
 
 const UserBooked = () => {
-  const handleJoinNow = (type) => {
-      console.log("handleJoinNow", type);
-      
-  };
   const location = useLocation();
+  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
 
   const trainerId = searchParams.get("trainer");
+  const slot = searchParams.get("time");
+
+  const { user } = useContext(AuthContext);
+  const handleJoinNow = (type, price) => {
+    const premiumMember = {
+      memberEmail: user?.email,
+      memberType: type,
+      slot: slot,
+      price: price,
+      trainerId: trainerId,
+    };
+    console.log("handleJoinNow", premiumMember);
+    axiosSecure
+      .post("/add-premium-member", { premiumMember: premiumMember })
+      .then((res) => {
+        console.log(res.data);
+      });
+    navigate("/payment-page");
+  };
+
   const day = searchParams.get("day");
   const time = searchParams.get("time");
   console.log(trainerId, day, time);
@@ -38,7 +58,7 @@ const UserBooked = () => {
           <p className="text-white font-bold text-lg py-4">Montly Fee: $50</p>
 
           <button
-            onClick={() => handleJoinNow("silver")}
+            onClick={() => handleJoinNow("silver", "50")}
             className="btn btn-outline text-white w-full hover:bg-orange-600 border-white border-1"
           >
             JOIN NOW
@@ -68,7 +88,7 @@ const UserBooked = () => {
           <p className=" py-4 font-bold text-lg">Montly Fee: $75</p>
 
           <button
-            onClick={() => handleJoinNow("gold")}
+            onClick={() => handleJoinNow("gold", "75")}
             className="btn btn-outline text-white w-full hover:bg-orange-600 border-white border-1"
           >
             JOIN NOW
@@ -96,7 +116,7 @@ const UserBooked = () => {
           <p className="font-bold text-lg py-4">Montly Fee: $100</p>
 
           <button
-            onClick={() => handleJoinNow("diamond")}
+            onClick={() => handleJoinNow("diamond", "100")}
             className="btn btn-outline text-white w-full hover:bg-orange-600 border-white border-1"
           >
             JOIN NOW

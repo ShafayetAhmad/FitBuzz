@@ -74,7 +74,7 @@ const UserRegister = () => {
       photoURL: photoUrl,
       userRole: "user",
     };
-    registerUser(email, password)
+    registerUser(email, password, name)
       .then((userCredentials) => {
         console.log(userCredentials);
         axiosSecure

@@ -6,6 +6,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../../../../firebase.config";
@@ -17,7 +18,7 @@ const AuthProvider = ({ children }) => {
   const googleAuthProvider = new GoogleAuthProvider();
   const [user, setUser] = useState(null);
   const [registerError, setRegisterError] = useState(null);
-  const registerUser = async (email, password) => {
+  const registerUser = async (email, password, fullName) => {
     setLoading(true);
     try {
       const result = await createUserWithEmailAndPassword(
@@ -25,6 +26,11 @@ const AuthProvider = ({ children }) => {
         email,
         password
       );
+      if (result.user) {
+        await updateProfile(result.user, {
+          displayName: fullName,
+        });
+      }
       Swal.fire("Registration successful");
       return result;
     } catch (error) {
@@ -34,6 +40,17 @@ const AuthProvider = ({ children }) => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const updateProfile = async (fullName, imglink) => {
+    const result = await updateProfile(user, {
+      displayName: fullName,
+      photoURL: imglink,
+    }).then((result) => {
+      console.log(result);
+      Swal.fire("Profile Updated");
+    });
+    return result;
   };
 
   const googleLogin = async () => {
