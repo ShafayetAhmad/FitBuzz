@@ -36,8 +36,17 @@ const UserDashboard = ({ user }) => {
     <div>
       <div>
         <h3 className="text-center font-bold text-3xl ">
-          Hey, User{" "}
-          <span className="text-4xl text-orange-500">{user.userName}</span>
+          Hey, <span className="text-4xl text-orange-500">{user.userName}</span>
+          <div className="py-10">
+            <p>
+              Your Trainer(s):{" "}
+              {trainers.map((trainer) => (
+                <span className="font-bold text-4xl" key={trainer.Id}>
+                  {trainer},
+                </span>
+              ))}
+            </p>
+          </div>
           <h3 className=" py-10 text-4xl text-orange-500">
             Your Todays Activities!
           </h3>
@@ -104,16 +113,6 @@ const UserDashboard = ({ user }) => {
             </div>
           </div>
         }
-        <div>
-          <p>
-            Your Trainer(s):{" "}
-            {trainers.map((trainer) => (
-              <span className="font-bold text-2xl" key={trainer.Id}>
-                {trainer},
-              </span>
-            ))}
-          </p>
-        </div>
       </div>
     </div>
   );
