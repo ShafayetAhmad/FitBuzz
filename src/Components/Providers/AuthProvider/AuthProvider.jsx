@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const updateProfile = async (fullName, imglink) => {
+  const updateUserProfile = async (fullName, imglink) => {
     const result = await updateProfile(user, {
       displayName: fullName,
       photoURL: imglink,
@@ -126,6 +126,7 @@ const AuthProvider = ({ children }) => {
         googleLogin,
         loading,
         registerError,
+        updateUserProfile,
       }}
     >
       {children}

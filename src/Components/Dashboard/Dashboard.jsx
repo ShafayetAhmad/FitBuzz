@@ -7,18 +7,17 @@ import UserDashboard from "./UserDashboard/UserDashboard";
 
 const Dashboard = () => {
   const formRef = useRef(null);
-  const { user } = useContext(AuthContext);
+  const { user, updateUserProfile } = useContext(AuthContext);
   console.log(user.email);
   const [userDetails, setUserDetails] = useState(null);
   const [userRole, setUserRole] = useState(null);
-  const { updateProfile } = useContext(AuthContext);
 
   const handleUpdateProfile = (e) => {
     e.preventDefault();
     const formData = new FormData(formRef.current);
     const fullName = formData.get("fullName");
     const imglink = formData.get("imglink");
-    updateProfile(fullName, imglink);
+    updateUserProfile(fullName, imglink);
   };
   useEffect(() => {
     axiosSecure.get(`/get-user?email=${user?.email}`).then((data) => {

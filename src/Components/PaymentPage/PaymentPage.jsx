@@ -28,6 +28,19 @@ const PaymentPage = () => {
 
   const handleConfirmPayment = () => {
     console.log("Payment confirmed!");
+    const paymentData = {
+      trainerName: trainerName,
+      memberName: user.displayName,
+      memberEmail: user.email,
+      membershipType: premiumMemberData.memberType,
+      slot: premiumMemberData.memberType,
+      price: premiumMemberData.price,
+    };
+    axiosSecure
+      .post("/payment-from-booked-user", { paymentData: paymentData })
+      .then((res) => {
+        console.log(res.data);
+      });
   };
 
   return (
