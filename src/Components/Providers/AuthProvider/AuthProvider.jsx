@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../../../../firebase.config";
-
+import Swal from "sweetalert2";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
@@ -20,10 +20,17 @@ const AuthProvider = ({ children }) => {
   const registerUser = async (email, password) => {
     setLoading(true);
     try {
-      return await createUserWithEmailAndPassword(auth, email, password);
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      Swal.fire("Registration successful");
+      return result;
     } catch (error) {
       console.log(error.message);
       setRegisterError(error.message);
+      Swal.fire(registerError);
     } finally {
       setLoading(false);
     }
@@ -32,7 +39,9 @@ const AuthProvider = ({ children }) => {
   const googleLogin = async () => {
     setLoading(true);
     try {
-      return await signInWithPopup(auth, googleAuthProvider);
+      const result = await signInWithPopup(auth, googleAuthProvider);
+      Swal.fire("Google Login Succesfull");
+      return result;
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -43,7 +52,9 @@ const AuthProvider = ({ children }) => {
   const userLogin = (email, password) => {
     setLoading(true);
     try {
-      return signInWithEmailAndPassword(auth, email, password);
+      const result = signInWithEmailAndPassword(auth, email, password);
+      Swal.fire("Login Succesfull");
+      return result;
     } catch (error) {
       console.log(error.message);
     } finally {
@@ -54,6 +65,7 @@ const AuthProvider = ({ children }) => {
   const logout = async () => {
     setLoading(true);
     await signOut(auth);
+    Swal.fire("Logout successful");
     setLoading(false);
   };
 
@@ -64,7 +76,8 @@ const AuthProvider = ({ children }) => {
       console.log("user on auth changed: ", currentUser);
       setUser(currentUser);
       setLoading(false);
-        {/*if (currentUser) {
+      {
+        /*if (currentUser) {
         axios
           .post("https://gig-rapid-server.vercel.app/jwt", loggedUser, {
             withCredentials: true,
@@ -81,7 +94,7 @@ const AuthProvider = ({ children }) => {
             console.log(res.data);
           });
       }}*/
-        }
+      }
     });
     return () => unSubscribe();
   }, [user]);

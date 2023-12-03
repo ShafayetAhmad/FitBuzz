@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faClock,
   faCodePullRequest,
   faExclamationCircle,
+  faGears,
   faHatCowboy,
   faLinesLeaning,
 } from "@fortawesome/free-solid-svg-icons";
+import moment from "moment";
 
 /* eslint-disable react/prop-types */
 const AdminDashboard = ({ user }) => {
@@ -28,7 +29,12 @@ const AdminDashboard = ({ user }) => {
     const trainerEmail = selectedRequest.email;
     axiosSecure
       .post("/accept-trainer", { email: trainerEmail })
-      .then((data) => console.log(data.data));
+      .then((data) => {
+        console.log(data.data);
+        axiosSecure.get("/getTrainerRequests").then((data) => {
+          settrainerRequests(data.data);
+        });
+      });
   };
 
   useEffect(() => {
@@ -77,14 +83,9 @@ const AdminDashboard = ({ user }) => {
           <div className="pb-8 text-black w-full text-center">
             <h1 className="text-4xl  font-bold text-center mt-16">
               <FontAwesomeIcon icon={faHatCowboy}></FontAwesomeIcon>
-              <span className="mx-8"> Our Top Classes For You</span>
+              <span className="mx-8"> All Trainers</span>
               <FontAwesomeIcon icon={faHatCowboy}></FontAwesomeIcon>
             </h1>
-            <h5 className="font-bold text-3xl mt-4">
-              <FontAwesomeIcon icon={faClock} color="red"></FontAwesomeIcon>{" "}
-              Join Now{" "}
-              <FontAwesomeIcon icon={faClock} color="red"></FontAwesomeIcon>
-            </h5>
           </div>
           {trainersData?.map((trainer, index) => (
             <div
@@ -93,7 +94,7 @@ const AdminDashboard = ({ user }) => {
             >
               <div className="grid col-span-2 border-4 border-white justify-center items-center bg-slate-900">
                 <div className="text-center">
-                  <p className="text-xl">Class</p>
+                  <p className="text-xl">Trainer</p>
                   <h3 className="text-5xl">{++index}</h3>
                 </div>
               </div>
@@ -105,23 +106,26 @@ const AdminDashboard = ({ user }) => {
                     color="red"
                     className="pr-3"
                   ></FontAwesomeIcon>
-                  CLASS NAME
+                  TRAINER NAME
                 </p>
                 <h3 className="font-bold text-3xl">{trainer.full_name}</h3>
               </div>
               <div className="col-span-3 px-3 border-y-4 border-white  bg-[rgb(34,32,34)] text-left pt-10">
                 <p className="font-bold text-sm text-[rgb(154,154,154)]">
                   <FontAwesomeIcon
-                    icon={faLinesLeaning}
+                    icon={faGears}
                     size="xl"
                     color="red"
                     className="pr-3"
                   ></FontAwesomeIcon>
-                  CLASS TIME
+                  SKILLS
                 </p>
-                <h3 className="font-bold text-3xl">
-                  {trainer.time_start} - {trainer.time_end}
-                </h3>
+                <ul className="font-bold text-md">
+                  {Array.isArray(trainer.skills) &&
+                    trainer.skills?.map((skill, index) => (
+                      <li key={index}>- {skill}</li>
+                    ))}
+                </ul>
               </div>
               <div className="col-span-2 px-3 border-y-4 border-white  bg-[rgb(34,32,34)] text-left pt-10 w-full">
                 <p className="font-bold text-sm text-[rgb(154,154,154)]">
@@ -131,15 +135,31 @@ const AdminDashboard = ({ user }) => {
                     color="red"
                     className="pr-3"
                   ></FontAwesomeIcon>
-                  INSTRUCTOR
+                  SCHEDULE
                 </p>
-                <h3 className="font-bold text-3xl">{trainer.trainer}</h3>
+                <h3 className="font-bold text-md">
+                  {trainer.available_days_in_week &&
+                    trainer.available_days_in_week.map((index, day) => (
+                      <span key={index} className="mx-2">
+                        {days[day]}
+                      </span>
+                    ))}
+                </h3>
+                <h3 className="font-bold text-md mx-2">
+                  {trainer.startTime} - {trainer.endTime}
+                </h3>
               </div>
 
               <div className="flex col-span-1 border-y-4 border-white bg-[rgb(34,32,34)]">
-                <button className="btn bg-[rgb(70,70,70)] rounded-none w-32 text-white border-x-4 border-y-0 border-orange-600 hover:bg-orange-600 m-auto">
-                  Pay Salary
-                </button>
+                {parseInt(moment().diff(trainer.joinDate, "months")) > 0 ? (
+                  <button className="btn bg-[rgb(70,70,70)] rounded-none w-32 text-white border-x-4 border-y-0 border-orange-600 hover:bg-orange-600 m-auto">
+                    Pay Salary
+                  </button>
+                ) : (
+                  <button className="btn bg-[rgb(70,70,70)] rounded-none w-32 text-white border-x-4 border-y-0 border-orange-600 hover:bg-orange-600 m-auto">
+                    Payment Clear
+                  </button>
+                )}
               </div>
             </div>
           ))}

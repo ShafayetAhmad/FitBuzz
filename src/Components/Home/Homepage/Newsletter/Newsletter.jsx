@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { axiosSecure } from "../../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const Newsletter = () => {
   const formRef = useRef(null);
@@ -11,7 +12,10 @@ const Newsletter = () => {
     const subscriber = { name: name, email: email };
     axiosSecure
       .post("/add-subscriber", { subscriber: subscriber })
-      .then((res) => console.log(res.data));
+      .then((res) => {
+        console.log(res.data);
+        Swal.fire(res.data);
+      });
   };
 
   return (
