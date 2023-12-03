@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const TrainerDetails = () => {
+  const navigate = useNavigate();
   const id = useParams().id;
   const [trainerDetails, setTrainerDetails] = useState({});
   const [trainerAvailability, setTrainerAvailability] = useState(null);
@@ -21,14 +22,24 @@ const TrainerDetails = () => {
     "Friday",
     "SaturDay",
   ];
+  const handleEnroleNow = (day, time) => {
+    console.log("handleEnroleNow");
+    navigate(
+      `/user-booked?trainer=${trainerDetails._id}&&day=${day}&&time=${time}`
+    );
+  };
 
   useEffect(() => {
-    axiosSecure.get(`/getTrainerDetails?id=${id}`).then((data) => {
-      console.log(data.data[0]);
-      setTrainerDetails(data.data[0]);
-      setTrainerAvailability(trainerDetails.availability);
-    });
-  }, [id, trainerDetails]);
+    const getTrainerDetails = () => {
+      axiosSecure.get(`/getTrainerDetails?id=${id}`).then((data) => {
+        console.log(data.data[0]);
+        setTrainerDetails(data.data[0]);
+        setTrainerAvailability(data.data[0].availability);
+      });
+    };
+    getTrainerDetails();
+  }, [id]);
+
   console.log(trainerDetails);
   return (
     <div className="bg-gray-700 py-20">
@@ -72,7 +83,7 @@ const TrainerDetails = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center mt-20">
+      <div className="flex items-center justify-center mt-20 mx-8">
         <div className="availability-table text-white ">
           <table>
             <thead>
@@ -86,13 +97,19 @@ const TrainerDetails = () => {
                 <tr key={index}>
                   <td className="my-8 font-bold text-2xl">{days[index]}</td>
                   <td>
-                    <ul className="flex flex-row gap-16">
+                    <ul className="flex flex-row gap-8">
                       {Object.entries(item).map(([timeSlot, available]) => (
-                        <li key={timeSlot} className="flex gap-8 justify-center items-center border-4 px-8 py-3">
+                        <li
+                          key={timeSlot}
+                          className="flex gap-8 justify-center items-center border-4 px-8 py-3"
+                        >
                           {timeSlot}:{" "}
                           {available ? (
                             <div>
-                              <button className="btn btn-error">
+                              <button
+                                onClick={() => handleEnroleNow(index, timeSlot)}
+                                className="btn btn-error"
+                              >
                                 Enrole Now
                               </button>
                             </div>

@@ -1,4 +1,19 @@
+import { useRef } from "react";
+import { axiosSecure } from "../../../../Hooks/useAxiosSecure";
+
 const Newsletter = () => {
+  const formRef = useRef(null);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = new FormData(formRef.current);
+    const name = form.get("name");
+    const email = form.get("email");
+    const subscriber = { name: name, email: email };
+    axiosSecure
+      .post("/add-subscriber", { subscriber: subscriber })
+      .then((res) => console.log(res.data));
+  };
+
   return (
     <div>
       <section>
@@ -9,11 +24,13 @@ const Newsletter = () => {
             </h2>
             <p className="mx-auto mb-6 max-w-2xl text-sm text-[#636262] sm:text-base md:mb-10 lg:mb-12">
               Join our weekly Newsletter to get tips from our highly certified
-              GYM trainers and neutritionists. It is free and will be always
+              GYM trainers and nutritionists. It is free and will be always
               free.
             </p>
             <div className="mx-auto mb-4 flex max-w-lg justify-center">
               <form
+                ref={formRef}
+                onSubmit={handleSubmit}
                 name="email-form"
                 method="get"
                 className="flex w-full flex-col gap-3 "
@@ -21,13 +38,13 @@ const Newsletter = () => {
                 <input
                   type="text"
                   name="name"
-                  className="h-9 w-full rounded-md border border-solid border-black px-3 py-6 text-sm text-[#333333]"
+                  className="h-9 w-full rounded-md border border-solid border-black px-3 py-2 text-sm text-[#333333]"
                   placeholder="Enter your Name"
                 />
                 <input
                   type="email"
-                  name="name"
-                  className="h-9 w-full rounded-md border border-solid border-black px-3 py-6 text-sm text-[#333333]"
+                  name="email"
+                  className="h-9 w-full rounded-md border border-solid border-black px-3 py-2 text-sm text-[#333333]"
                   placeholder="Enter your email"
                 />
                 <input

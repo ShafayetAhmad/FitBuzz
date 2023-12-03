@@ -1,9 +1,13 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
+import { AuthContext } from "../../Providers/AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const BeATrainer = () => {
   const [img, setImg] = useState({});
   const formRef = useRef(null);
+  const { user } = useContext(AuthContext);
+  console.log(user.email);
 
   const handleImageLink = async (e) => {
     const image = e?.target?.files?.[0];
@@ -54,8 +58,9 @@ const BeATrainer = () => {
       const fullName = formData.get("fullName");
       const DOB = formData.get("dob");
       const age = calculateAge(DOB);
+      const yearsOfExperience = formData.get("yearsOfExperience");
       const profilePicture = response.data.data.display_url;
-      const trainerSkills = skills;
+      const trainerSkills = Object.keys(skills).filter((key) => skills[key]);
       const startHour = formData.get("startHour");
       const startampm = formData.get("startampm");
       const startTime = `${startHour}:00${startampm}`;
@@ -63,7 +68,12 @@ const BeATrainer = () => {
       const endampm = formData.get("endampm");
       const endTime = `${endHour}:00${endampm}`;
 
-      const trainingDays = Object.keys(days);
+      // eslint-disable-next-line no-unused-vars
+      const trueDays = Object.entries(days).filter(([day, checked]) => checked);
+      console.log(trueDays);
+      const trainingDays = Object.keys(trueDays);
+      console.log(trainingDays);
+
       const hourSlots = convertToHourSlots(startTime, endTime);
 
       // eslint-disable-next-line no-unused-vars
@@ -81,6 +91,8 @@ const BeATrainer = () => {
         full_name: fullName,
         age: age,
         image: profilePicture,
+        email: user?.email,
+        years_of_experience: yearsOfExperience,
         skills: trainerSkills,
         startTime: startTime,
         endTime: endTime,
@@ -91,48 +103,51 @@ const BeATrainer = () => {
       };
       axiosSecure
         .post("/add-trainer", { trainerFolio: trainerFolio })
-        .then((res) => console.log(res));
+        .then((res) => {
+          Swal.fire(res.data);
+        });
     } catch (error) {
       console.error("Error uploading image:", error);
     }
   };
   const convertToHourSlots = (startTime, endTime) => {
     const slots = [];
-    const [startHour, startMinute] = startTime.split(/:|(?=[apAP][mM])/);
-    const [endHour, endMinute] = endTime.split(/:|(?=[apAP][mM])/);
+    const [startHour, startMinute, startAMPM] = startTime.match(/\d+|am|pm/gi);
+    const [endHour, endMinute, endAMPM] = endTime.match(/\d+|am|pm/gi);
 
     const start = new Date(
       2000,
       0,
       1,
-      (startHour % 12) +
-        (startTime.includes("pm") || startTime.includes("PM") ? 12 : 0),
+      (startHour % 12) + (startAMPM.toLowerCase() === "pm" ? 12 : 0),
       startMinute || 0
     );
     const end = new Date(
       2000,
       0,
       1,
-      (endHour % 12) +
-        (endTime.includes("pm") || endTime.includes("PM") ? 12 : 0),
+      (endHour % 12) + (endAMPM.toLowerCase() === "pm" ? 12 : 0),
       endMinute || 0
     );
 
     while (start < end) {
-      const slotStart = start.toLocaleTimeString([], {
-        hour: "2-digit",
+      const slotStart = start.toLocaleTimeString("en-US", {
+        hour: "numeric",
         minute: "2-digit",
+        hour12: true,
       });
       start.setHours(start.getHours() + 1);
-      const slotEnd = start.toLocaleTimeString([], {
-        hour: "2-digit",
+      const slotEnd = start.toLocaleTimeString("en-US", {
+        hour: "numeric",
         minute: "2-digit",
+        hour12: true,
       });
       slots.push(`${slotStart}-${slotEnd}`);
     }
 
     return slots;
   };
+
   const calculateAge = (dob) => {
     const birthDate = new Date(dob);
     const today = new Date();
@@ -167,7 +182,7 @@ const BeATrainer = () => {
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text text-lg">Email: dummy@mail.com</span>
+            <span className="label-text text-lg">Email: {user?.email}</span>
           </label>
         </div>
         <div className="flex">
@@ -186,6 +201,17 @@ const BeATrainer = () => {
           <input
             type="date"
             name="dob"
+            className="border-black p-2 border-2 w-max-sm"
+            alt=""
+          />
+          <label className="label">
+            <span className="label-text text-lg ml-4">
+              Years Of Experience:
+            </span>
+          </label>
+          <input
+            type="number"
+            name="yearsOfExperience"
             className="border-black p-2 border-2 w-max-sm"
             alt=""
           />
