@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import { faTurnDown, faTurnUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 
 const BlogBody = ({blog}) => {
@@ -22,6 +24,16 @@ const BlogBody = ({blog}) => {
               Read More
             </button>
           </Link>
+        </div>
+      </div>
+      <div className="my-10 mr-4 flex flex-col justify-between">
+        <div>
+          <FontAwesomeIcon icon={faTurnUp} size="2xl"></FontAwesomeIcon>
+          <p className="text-xl">{blog.upvote}</p>
+        </div>
+        <div>
+          <FontAwesomeIcon icon={faTurnDown} size="2xl"></FontAwesomeIcon>
+          <p className="text-xl">{blog.downvote}</p>
         </div>
       </div>
     </div>

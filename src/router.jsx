@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import UserBooked from "./Components/UserBooked/UserBooked";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import PaymentPage from "./Components/PaymentPage/PaymentPage";
+import AllBlogs from "./Components/AllBlogs/AllBlogs";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
             <PaymentPage></PaymentPage>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/Forum",
+        element: <AllBlogs></AllBlogs>,
       },
     ],
   },
