@@ -6,6 +6,9 @@ import TrainerDashboard from "./TrainerDashboard/TrainerDashboard";
 import UserDashboard from "./UserDashboard/UserDashboard";
 
 const Dashboard = () => {
+  useEffect(() => {
+    document.title = "FitBuzz | Dashboard";
+  }, []);
   const formRef = useRef(null);
   const { user, updateUserProfile } = useContext(AuthContext);
   console.log(user.email);
@@ -39,9 +42,9 @@ const Dashboard = () => {
           <UserDashboard user={userDetails}></UserDashboard>
         )}
       </div>
-      <div>
+      <div className="bg-green-300 rounded-3xl">
         {" "}
-        <h3 className="text-center font-bold text-3xl">
+        <h3 className=" font-bold text-3xl text-center py-4">
           Update Your Account Details
         </h3>
         <form className="card-body" ref={formRef}>

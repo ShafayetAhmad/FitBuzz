@@ -1,4 +1,11 @@
+
 const OurTrainers = () => {
+  // const [ourTrainers, setOurTrainers] = useState(null);
+  // axiosSecure.get("/ourTrainers").then((res) => {
+  //   console.log(res.data);
+  //   setOurTrainers(res.data);
+  //   console.log(ourTrainers);
+  // });
   return (
     <div>
       <section>

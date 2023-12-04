@@ -15,6 +15,7 @@ import UserBooked from "./Components/UserBooked/UserBooked";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import PaymentPage from "./Components/PaymentPage/PaymentPage";
 import AllBlogs from "./Components/AllBlogs/AllBlogs";
+import Gallery from "./Components/Gallery/Gallery";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
         path: "/Forum",
         element: <AllBlogs></AllBlogs>,
+      },
+      {
+        path: "/Gallery",
+        element: <Gallery></Gallery>,
       },
     ],
   },

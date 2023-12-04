@@ -25,7 +25,6 @@ const AdminDashboard = ({ user }) => {
     "Friday",
     "Saturday",
   ];
-  
 
   const acceptTrainerRequest = () => {
     const trainerEmail = selectedRequest.email;
@@ -185,6 +184,11 @@ const AdminDashboard = ({ user }) => {
               <FontAwesomeIcon icon={faCodePullRequest}></FontAwesomeIcon>
             </h1>
           </div>
+          {trainerRequests?.length == 0 && (
+            <div className="font-bold text-5xl text-center">
+              No Requests For Now
+            </div>
+          )}
           {trainerRequests?.map((request, index) => (
             <div
               key={index}
@@ -319,11 +323,11 @@ const AdminDashboard = ({ user }) => {
                           </div>
                         </form>
                       </div>
-                      <AddNewForum></AddNewForum>
                     </div>
                   </dialog>
                 </div>
               </div>
+              <AddNewForum userType={"admin"}></AddNewForum>
             </div>
           ))}
         </div>

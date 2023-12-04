@@ -1,5 +1,9 @@
+import { useEffect } from "react";
 import errorIcon from "/404.webp";
 const ErrorPage = () => {
+  useEffect(() => {
+    document.title = "FitBuzz | Error Page";
+  }, []);
   return (
     <section>
       <div className="px-5 py-16 md:px-10 md:py-24 lg:py-32">

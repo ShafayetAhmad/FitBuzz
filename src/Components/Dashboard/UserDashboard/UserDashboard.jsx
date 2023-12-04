@@ -52,12 +52,18 @@ const UserDashboard = ({ user }) => {
           </h3>
         </h3>
         {
-          <div>
+          <div className="grid lg:grid-cols-3 gap-4 grid-cols-1 mx-8">
             {userActivity?.filteredSlots?.length > 0 ? (
               userActivity.filteredSlots.map((slot, index) => (
-                <div key={index}>
+                <div
+                  key={index}
+                  className="border-2 p-4 text-center border-black"
+                >
                   {console.log(slot)}
-                  {slot.slotName}
+
+                  <p>Class Name: {slot.slotName}</p>
+                  <p>Time: {slot.time}</p>
+                  <p>Trainer: {slot.trainerName}</p>
                 </div>
               ))
             ) : (
@@ -113,8 +119,8 @@ const UserDashboard = ({ user }) => {
             </div>
           </div>
         }
+        <ClassesForYou></ClassesForYou>
       </div>
-      <ClassesForYou></ClassesForYou>
     </div>
   );
 };

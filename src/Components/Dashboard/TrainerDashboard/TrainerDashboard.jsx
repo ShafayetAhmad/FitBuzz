@@ -87,9 +87,13 @@ const TrainerDashboard = ({ user }) => {
                 </div>
               </div>
             ))}
-          {bookedUsers.length === 0 && <p>No students enrolled yet.</p>}
+          {bookedUsers.length === 0 && (
+            <p className="text-center font-bold text-xl">
+              No students enrolled yet.
+            </p>
+          )}
         </div>
-        <AddNewForum></AddNewForum>
+        <AddNewForum userType={"trainer"}></AddNewForum>
       </div>
     </div>
   );

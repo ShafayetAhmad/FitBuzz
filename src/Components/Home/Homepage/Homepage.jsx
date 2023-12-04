@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import AllBlogs from "../../AllBlogs/AllBlogs";
 import Banner from "../Banner/Banner";
 import ClassesForYou from "./ClassesForYou/ClassesForYou";
@@ -8,6 +9,9 @@ import Testimonials from "./Testimonials/Testimonials";
 import WhoAreWe from "./WhoAreWe/WhoAreWe";
 
 const Homepage = () => {
+    useEffect(() => {
+      document.title = "FitBuzz | Homepage";
+    }, []);
     return (
         <div>
             <Banner></Banner>

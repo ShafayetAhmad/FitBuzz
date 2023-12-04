@@ -3,6 +3,9 @@ import { axiosSecure } from "../../Hooks/useAxiosSecure";
 import BlogBody from "./BlogBody/BlogBody";
 
 const AllBlogs = () => {
+  useEffect(() => {
+    document.title = "FitBuzz | Forums";
+  }, []);
   const [blogsData, setBlogsData] = useState([]);
 
   useEffect(() => {

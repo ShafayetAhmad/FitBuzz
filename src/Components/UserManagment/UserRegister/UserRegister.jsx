@@ -17,9 +17,11 @@ const UserRegister = () => {
   }, []);
   const navigate = useNavigate();
   const location = useLocation();
+  const [spinner, setSpinner] = useState(false);
   const [passwordError, setPasswordError] = useState(null);
   const { registerUser, googleLogin, registerError } = useContext(AuthContext);
   const handleGoogleSignIn = () => {
+    setSpinner(true);
     console.log("in google login");
     googleLogin()
       .then((userCredentials) => {
@@ -44,8 +46,10 @@ const UserRegister = () => {
       .catch((error) => {
         console.log(error.message);
       });
+    setSpinner(false);
   };
   const handleRegister = (e) => {
+    setSpinner(true);
     e.preventDefault();
     const form = new FormData(e.currentTarget);
     const name = form.get("name");
@@ -88,6 +92,7 @@ const UserRegister = () => {
       .catch((error) => {
         console.log(error.message);
       });
+    setSpinner(false);
   };
   return (
     <div className="lg:flex">
@@ -204,7 +209,9 @@ const UserRegister = () => {
                   <p className="text-red-500 text-sm">{passwordError}</p>
                 )}
               </div>
-
+              <div className={spinner ? "" : "hidden"}>
+                <span className="loading loading-spinner loading-lg"></span>
+              </div>
               <button
                 type="submit"
                 href="#"
@@ -223,6 +230,7 @@ const UserRegister = () => {
                 </div>
               </button>
             </form>
+
             <p className=" text-[#636262]">
               Already have an account?{" "}
               <Link

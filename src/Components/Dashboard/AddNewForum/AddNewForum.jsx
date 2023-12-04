@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import { useRef } from "react";
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
 
-const AddNewForum = () => {
+const AddNewForum = ({ userType }) => {
   const formRef = useRef(null);
   const handleAddForum = (e) => {
     e.preventDefault();
@@ -13,6 +14,7 @@ const AddNewForum = () => {
       title: forumTitle,
       thumbnail: forumThumbnail,
       content: forumContent,
+      userType: userType,
     };
     axiosSecure.post("/add-forum", { forumData: forumData }).then((res) => {
       console.log(res.data);

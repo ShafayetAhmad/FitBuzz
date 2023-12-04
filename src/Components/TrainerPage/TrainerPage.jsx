@@ -9,6 +9,9 @@ import { Link } from "react-router-dom";
 import { axiosSecure } from "../../Hooks/useAxiosSecure";
 
 const TrainerPage = () => {
+  useEffect(() => {
+    document.title = "FitBuzz | Trainers";
+  }, []);
   const [trainerData, setTrainerData] = useState([]);
 
   useEffect(() => {

@@ -9,6 +9,9 @@ import { AuthContext } from "../Providers/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 
 const AllClasses = () => {
+  useEffect(() => {
+    document.title = "FitBuzz | Homepage";
+  }, []);
   const [allClasses, setAllClasses] = useState([]);
   const result = {};
   let classIndex = 0;
