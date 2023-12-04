@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { axiosSecure } from "../../../Hooks/useAxiosSecure";
+import ClassesForYou from "../../Home/Homepage/ClassesForYou/ClassesForYou";
 
 /* eslint-disable react/prop-types */
 const UserDashboard = ({ user }) => {
@@ -31,7 +32,6 @@ const UserDashboard = ({ user }) => {
       });
   }, [user, setTrainers]);
 
-  console.log(trainers);
   return (
     <div>
       <div>
@@ -114,6 +114,7 @@ const UserDashboard = ({ user }) => {
           </div>
         }
       </div>
+      <ClassesForYou></ClassesForYou>
     </div>
   );
 };

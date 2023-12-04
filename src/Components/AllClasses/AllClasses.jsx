@@ -14,7 +14,7 @@ const AllClasses = () => {
   let classIndex = 0;
 
   allClasses.forEach((item) => {
-    const day = item.day.toString();
+    const day = item?.day?.toString();
     if (!result[day]) {
       result[day] = [item];
     } else if (result[day].length < 3) {
