@@ -18,10 +18,10 @@ FitBuzz is an innovative Fitness Tracker designed for fitness enthusiasts. This 
 
 ## Project Structure
 
+- **Live Site**: [FitBuzz Live Site](https://fitbuzz-316d8.web.app)
+
 - **Client-Side Repository**: [Link](https://github.com/programming-hero-web-course1/b8a12-client-side-ShafayetAhmad.git)
 - **Server-Side Repository**: [Link](https://github.com/programming-hero-web-course1/b8a12-server-side-ShafayetAhmad.git)
-
-- **Live Site**: [FitBuzz Live Site](https://fitbuzz-316d8.web.app)
 
 ---
 
